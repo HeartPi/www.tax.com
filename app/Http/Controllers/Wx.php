@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Model\IconListModel;
+use App\Model\IndentModel;
 use Illuminate\Http\Request;
+
+use function GuzzleHttp\json_encode;
 
 class Wx extends Base
 {
@@ -12,8 +15,17 @@ class Wx extends Base
         
     }
     //执行兑换openid 请求
-    public function getOpenId(Request $request){
-        return $request->all();
+    public function onLogin(Request $request){
+        $code = $request->input('code');
+        if ($code) {
+            $open_id = config('openid');
+            $appSecret = config('appSecret');
+            $url = "https://api.weixin.qq.com/sns/jscode2session?appid={$open_id}&secret={$appSecret}&js_code={$code}&grant_type=authorization_code";
+            $tmps = geturl($url);
+            return $tmps;
+        }else{
+            return false;
+        }
     }
     //验证登录
     public function login(Request $request)
@@ -25,5 +37,15 @@ class Wx extends Base
     {
         $icon = $icon_list->where(['is_delete'=>1])->get()->toArray();
         return $icon;
+    }
+    //订单提交操作
+    public function installData(Request $request,IndentModel $indent)
+    {  
+        $data = $request->all();
+        $data['json_data'] = json_encode($data);
+        
+        if ($indent->save($data) !== false) {
+            $this->api_success();
+        }
     }
 }

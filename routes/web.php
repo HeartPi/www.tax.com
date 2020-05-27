@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/getOpenId','Wx@getOpenId');
+Route::get('/onLogin','Wx@onLogin');
 
 Route::get('/get_info','Wx@index');

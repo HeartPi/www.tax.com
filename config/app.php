@@ -56,6 +56,10 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    // 微信小程序Openid 
+    'openid'=> env('WX_OPEN_ID',null),
+    //微信小程序APPSECRET
+    'appSecret'=>env('WX_APPSECRET',null),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
