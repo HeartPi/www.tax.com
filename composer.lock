@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c0f88721f89c314ad1eb762db41c093",
+    "content-hash": "6fdd80ba04b492b80a0ec8b3b63cb0fc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1890,16 +1890,16 @@
         },
         {
             "name": "overtrue/wechat",
-            "version": "4.2.19",
+            "version": "4.2.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/wechat.git",
-                "reference": "74dec73792e7747109fe115815c9c4dafe41aba2"
+                "reference": "b4b4ac40ce739847f81de2f326e06be065fb142d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/wechat/zipball/74dec73792e7747109fe115815c9c4dafe41aba2",
-                "reference": "74dec73792e7747109fe115815c9c4dafe41aba2",
+                "url": "https://api.github.com/repos/overtrue/wechat/zipball/b4b4ac40ce739847f81de2f326e06be065fb142d",
+                "reference": "b4b4ac40ce739847f81de2f326e06be065fb142d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1959,7 +1959,7 @@
                 "weixin",
                 "weixin-sdk"
             ],
-            "time": "2020-04-27T09:10:12+00:00"
+            "time": "2020-05-26T01:41:28+00:00"
         },
         {
             "name": "phpoption/phpoption",

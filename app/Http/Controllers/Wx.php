@@ -42,10 +42,32 @@ class Wx extends Base
     public function installData(Request $request,IndentModel $indent)
     {  
         $data = $request->all();
-        $data['json_data'] = json_encode($data);
-        
-        if ($indent->save($data) !== false) {
-            $this->api_success();
+        $time = \nowDate();
+        //加入创建时间
+        $data['created_at'] = $time;
+        $data['updated_at'] = $time;
+        if ($id = $indent->insertGetId($data) !== false) {
+            return $this->api_success('操作成功',$id);
+        }else{
+            return $this->api_error('操作失败',$data);
         }
+    }
+    //获取历史订单
+    public function getInstallData(Request $request,IndentModel $indent)
+    {
+        //从请求中获取openID
+        $open_id = $request->input('openId',null);
+        //从请求中获取orderId
+        $orderId = $request->input('orderId',0);
+
+        $reply = $indent->selectRaw('id,license_plate_number as name,"待付款" as state,created_at as time,"未处理" as status,tax as money')->paginate(10);
+        return $this->api_success('操作成功',$reply);   
+    }
+    //获取订单详情
+    public function getInstallInfo(Request $request,IndentModel $indent)
+    {
+        $id = $request->input('id',0);
+        $info = $indent->find($id);
+        return $this->api_success('操作成功',$info);
     }
 }

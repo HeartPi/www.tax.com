@@ -7,7 +7,15 @@ use Illuminate\Http\Request;
 class Base extends Controller
 {
     //控制器基类
-    //接口成功返回api
+    
+    /**
+     * 返回成功
+     *
+     * @param string $msg 消息
+     * @param void $data 返回数据
+     * @param integer $code 返回状态码
+     * @return void
+     */
     public function api_success($msg,$data,$code = 1)
     {
         $res_data = [
@@ -17,7 +25,14 @@ class Base extends Controller
         ];
         return response()->json($res_data);
     }
-    //错误返回接口
+    /**
+     * 失败返回
+     *
+     * @param string $msg 消息
+     * @param void $data 返回数据
+     * @param integer $code 返回状态码
+     * @return void 
+     */
     public function api_error($msg,$data,$code = 0)
     {
         $res_data = [
