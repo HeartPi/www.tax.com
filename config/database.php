@@ -15,6 +15,7 @@ return [
     |
     */
 
+
     'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
@@ -37,7 +38,7 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'url' => env('DATABASE_URL'),
+            'url' => env('DATABASE_URL','mysql://root:root@127.0.0.1/www.tax.com'),
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),

@@ -12,10 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/','index@index');
 
 Route::get('/onLogin','Wx@onLogin');
 
@@ -32,3 +29,7 @@ Route::post('auth/code', 'AuthController@code');
 Route::middleware('wechat')->group(function() {
     Route::post('auth', 'AuthController@index');
 });
+
+//展示首页
+// Route::get('/','admin@index');
+//登录页面
