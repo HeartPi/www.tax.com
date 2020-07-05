@@ -3,7 +3,9 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-
+/**
+ * 订单模型
+ */
 class IndentModel extends Model
 {
     //表明
@@ -46,5 +48,25 @@ class IndentModel extends Model
 	 */
 	public function fromDateTime($value) {
 		return $value;
+	}
+	/**
+	 * 获取文件时将字符串切割为数组
+	 *
+	 * @param field $value
+	 * @return void
+	 */
+	public function getFileAttribute($value)
+	{
+		return explode(',', $value);
+	}
+	/**
+	 * 设置文件时将文件合并为字符串
+	 *
+	 * @param filed $value
+	 * @return void
+	 */
+	public function setFileAttribute($value)
+	{
+		$this->attributes['file'] = implode(',', $value);
 	}
 }
